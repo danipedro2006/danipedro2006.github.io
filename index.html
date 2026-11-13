@@ -1,125 +1,276 @@
- 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="google-site-verification" content="RIIKBNuZJCkiHUGcc8HHhCQe0nFdr2QNHBqr0_Dq3SA" />
-    <title>Home &mdash; Explorăm Tehnologia Împreună</title>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="iTAcodemy – cursuri de programare, algoritmică și tehnologie pentru copii, adolescenți și adulți. Învață practic Python, Java și multe altele.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="iTAcodemy – Tehnologie pentru Oricine">
+  <meta property="og:description" content="Învață să gândești. Învață să programezi. Construiește ceva real.">
+  <meta name="theme-color" content="#10141d">
+  <title>iTAcodemy | Tehnologie pentru Oricine</title>
+  <style>
+    :root {
+      --bg: #10141d; --panel: #171e2a; --panel2: #1d2634;
+      --text: #f4f6fa; --muted: #aab4c3; --accent: #f3a847;
+      --accent2: #ffd08a; --line: rgba(255,255,255,.11);
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px);
+      background: rgba(16,20,29,.88); border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:11px; font-weight:850; letter-spacing:-.7px; font-size:1.45rem; }
+    .brand-mark {
+      width:38px; height:38px; display:grid; place-items:center; border-radius:12px;
+      color:#151922; background:var(--accent); font-weight:950; font-size:1.1rem;
+    }
+    .brand span small { display:block; color:var(--muted); font-size:.58rem; letter-spacing:2.1px; font-weight:700; margin-top:-4px; }
+    .navlinks { display:flex; align-items:center; gap:27px; color:#d8deea; font-size:.92rem; }
+    .navlinks a:hover { color:var(--accent2); }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:9px;
+      padding:13px 20px; border-radius:10px; font-weight:800; border:1px solid transparent;
+      transition:transform .18s ease, background .18s ease; cursor:pointer;
+    }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { background:var(--accent); color:#171a20; }
+    .btn-primary:hover { background:var(--accent2); }
+    .btn-outline { border-color:rgba(255,255,255,.25); color:var(--text); }
+    .btn-outline:hover { border-color:var(--accent); }
+    .hero {
+      position:relative; overflow:hidden; padding:100px 0 92px;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(243,168,71,.19), transparent 32%),
+        radial-gradient(ellipse at 10% 85%, rgba(59,110,177,.17), transparent 35%),
+        linear-gradient(135deg,#10141d 0%,#151d2a 58%,#10141d 100%);
+    }
+    .hero:before {
+      content:""; position:absolute; inset:0; opacity:.22; pointer-events:none;
+      background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+      background-size:48px 48px; mask-image:linear-gradient(to right,black,transparent 85%);
+    }
+    .hero-grid { position:relative; display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:60px; }
+    .eyebrow { color:var(--accent2); font-size:.78rem; font-weight:850; letter-spacing:2.3px; text-transform:uppercase; }
+    h1 { font-size:clamp(2.8rem,6vw,5.4rem); line-height:1.02; letter-spacing:-3px; margin:18px 0 24px; max-width:760px; }
+    h1 em { color:var(--accent); font-style:normal; }
+    .hero-copy { max-width:620px; color:#c2cad6; font-size:1.12rem; }
+    .hero-actions { display:flex; gap:13px; flex-wrap:wrap; margin-top:32px; }
+    .hero-note { margin-top:28px; color:var(--muted); font-size:.88rem; }
+    .code-window {
+      position:relative; padding:22px; border-radius:18px; background:rgba(13,17,25,.88);
+      border:1px solid rgba(255,255,255,.14); box-shadow:0 30px 90px rgba(0,0,0,.38);
+      transform:rotate(1.5deg);
+    }
+    .window-head { display:flex; align-items:center; gap:7px; padding-bottom:18px; border-bottom:1px solid var(--line); color:#9aa6b8; font-size:.78rem; }
+    .dot { width:9px; height:9px; border-radius:50%; background:#ef6a62; } .dot:nth-child(2){background:#e9b34f}.dot:nth-child(3){background:#65bd82}
+    pre { margin:20px 0 8px; white-space:pre-wrap; color:#dce5f1; font: .96rem/1.9 ui-monospace,SFMono-Regular,Consolas,monospace; }
+    .code-comment { color:#718096; } .code-key { color:#d7a5ff; } .code-fn { color:#80d4cb; } .code-str { color:#f2bd72; }
+    .code-foot { display:flex; justify-content:space-between; color:#8491a4; font-size:.72rem; margin-top:20px; }
+    section { padding:86px 0; }
+    .section-head { max-width:720px; margin-bottom:38px; }
+    .section-head h2 { font-size:clamp(2rem,4vw,3.2rem); line-height:1.1; letter-spacing:-1.5px; margin:10px 0 14px; }
+    .section-head p { color:var(--muted); margin:0; }
+    .courses { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .course {
+      padding:26px; border-radius:16px; background:linear-gradient(145deg,var(--panel),#141a24);
+      border:1px solid var(--line); min-height:230px; transition:transform .2s,border-color .2s;
+    }
+    .course:hover { transform:translateY(-5px); border-color:rgba(243,168,71,.55); }
+    .course-icon { width:48px; height:48px; display:grid; place-items:center; border-radius:13px; background:rgba(243,168,71,.13); color:var(--accent); font-size:1.35rem; font-weight:900; }
+    .course h3 { margin:18px 0 8px; font-size:1.22rem; }
+    .course p { margin:0; color:var(--muted); font-size:.94rem; }
+    .audience { background:#141a24; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .audience-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .audience-item { padding:24px; border-left:2px solid var(--accent); background:rgba(255,255,255,.025); }
+    .audience-item h3 { margin:0 0 7px; } .audience-item p { color:var(--muted); margin:0; font-size:.94rem; }
+    .method-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:60px; align-items:center; }
+    .method-panel { padding:30px; border-radius:18px; background:linear-gradient(145deg,#202a39,#151c28); border:1px solid var(--line); }
+    .method-panel .big { font-size:3.4rem; color:var(--accent); font-weight:900; line-height:1; }
+    .method-panel p { color:var(--muted); }
+    .steps { display:grid; gap:20px; }
+    .step { display:grid; grid-template-columns:42px 1fr; gap:15px; }
+    .step-num { width:38px; height:38px; display:grid; place-items:center; border-radius:11px; background:rgba(243,168,71,.14); color:var(--accent); font-weight:900; }
+    .step h3 { margin:0 0 4px; font-size:1.08rem; } .step p { margin:0; color:var(--muted); font-size:.94rem; }
+    .about { background:linear-gradient(110deg,rgba(243,168,71,.08),transparent 65%); }
+    .about-card { padding:34px; border:1px solid var(--line); border-radius:18px; background:rgba(23,30,42,.75); }
+    .about-card p { color:#c2cad6; max-width:850px; }
+    .contact { padding:88px 0; background:radial-gradient(ellipse at 50% 100%,rgba(243,168,71,.13),transparent 60%),#141a24; }
+    .contact-box { text-align:center; max-width:760px; margin:auto; }
+    .contact-box h2 { font-size:clamp(2.2rem,5vw,3.7rem); line-height:1.08; letter-spacing:-1.7px; margin:12px 0; }
+    .contact-box p { color:var(--muted); }
+    .contact-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    footer { padding:26px 0; border-top:1px solid var(--line); color:#8995a7; font-size:.84rem; }
+    .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:15px; flex-wrap:wrap; }
+    .socials { display:flex; gap:18px; } .socials a:hover { color:var(--accent); }
+    .wa-float { position:fixed; z-index:30; right:22px; bottom:22px; width:58px; height:58px; border-radius:50%; display:grid; place-items:center; background:#25D366; color:#062b16; box-shadow:0 8px 28px rgba(0,0,0,.35); font-size:1.5rem; font-weight:900; }
+    .wa-float:hover { transform:translateY(-3px); }
+    @media(max-width:850px) {
+      .navlinks { display:none; } .hero-grid,.method-grid { grid-template-columns:1fr; gap:38px; }
+      .hero { padding:75px 0 70px; } .code-window { max-width:620px; transform:none; }
+      .courses { grid-template-columns:repeat(2,1fr); } .audience-grid { grid-template-columns:1fr; }
+    }
+    @media(max-width:560px) {
+      .wrap { width:min(100% - 30px,var(--max)); } .nav { min-height:68px; }
+      .nav .btn { padding:10px 13px; font-size:.82rem; }
+      h1 { letter-spacing:-2px; } section { padding:66px 0; }
+      .courses { grid-template-columns:1fr; } .hero-actions .btn { width:100%; }
+      .contact-actions .btn { width:100%; } .about-card { padding:24px; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    PERSONALIZE BEFORE PUBLISHING:
+    1) Replace contact@your-domain.ro with your real email address.
+    2) Replace 1234567890 with your WhatsApp number in international format (digits only).
+       Example format for Romania: 407xxxxxxxx (do not include +, spaces or brackets).
+    3) Add your real Facebook page URL in the FACEBOOK_URL setting below.
+  -->
+  <script>
+    const CONTACT_EMAIL = "contact@your-domain.ro";
+    const WHATSAPP_NUMBER = "1234567890";
+    const FACEBOOK_URL = "https://www.facebook.com/";
+    const WHATSAPP_MESSAGE = "Bună! Doresc mai multe informații despre cursurile iTAcodemy.";
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  </script>
 
-    <!-- Framework CSS -->
-    <link rel="stylesheet" href="screen.css" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="print.css" type="text/css" media="print">
-    <!--[if lt IE 8]><link rel="stylesheet" href="ie.css" type="text/css" media="screen, projection"><![endif]-->
-  </head>
-  <body>
-
-    <div class="container">
-   	  <hr class="space" />
-      <h1 class="logo">i<span>T-acode.my</span></h1>
-      <div class="nav span-23 prepend-1 large" style="background-image:url('pic-01.jpg');">
-	  	<ul><li class="current"><a href="/">Home</a></li><li class=""><a href="despre-noi.html">Despre noi</a></li><li class=""><a href="cursuri.html">Cursuri</a></li><li class=""><a href="qa.html">Q&amp;A</a></li></ul>
-	  </div>
-      <div class="page">
-          <hr class="space" />
-	      	<div class="span-14 prepend-1 append-1">
-	<h1>Tehnologia începe cu tine</h1>
-<p><strong>&quot;Aproape totul poate fi simplificat și mai mult&quot; (Edward de Bono)</strong></p>
-<h1>Ce oferim?</h1>
-<h2>iT-acode.my îți oferă programe de curs, din domeniul programării și tehnologia informației.</h2>
-
-<p>Indiferent dacă ești interesat de programare, jocuri, electronică, inteligență artificială sau chiar de utilizarea pachetului Office, te ajutăm să-ți atingi obiectivele printr-o abordare interactivă și prietenoasă.
-
-
-<h4><p><strong>Instruire live – învățăm să programăm împreună</strong></h4>
-Știm că sprijinul oferit de un programator cu experiență este cel mai important element al procesului de învățare.<br />
-De aceea, lecțiile sunt predate în sală sau online interactiv <strong>după un model tradițional</strong>, având oportunitatea de a interacționa direct atât cu trainerul cât și cu întregul grup.În mod ideal organizăm o clasă cu 12 cursanți. Putem lucra în acest fel, individual, în perechi sau grupuri de 2, 3, 4 sau 6 cursanți.<br />
-Pe parcursul sesiunii, trainerul va aborda subiectele pas cu pas și va răspunde la eventualele întrebări. În timpul lecțiilor rezolvi sarcinile atribuite de noi iar instructorul îți verifică codul și te ajută pe tot parcursul sesiunii.</p>
-
-
-<h4><p><strong>Sesiune la distanță</strong></h4>
-Pentru a simplifica și accelera procesul de învățare vom accesa  platforma &quot;Zoom&quot; pentru a comunica cu trainerul și ceilalți cursanți și &quot;Google Classroom&quot; pentru acces la materialele de curs.</p>
- 
-<hr />
-
-<h2>Principiile Noastre: Simplu, Practic, Clar</h2>
-<p>Cursurile noastre sunt structurate astfel încât să înveți rapid și eficient:</p>
-<p>Abordare interactivă – toate ședințele au loc alături de instructori dedicați.<br />
-Exemple clare – pentru a evita confuzia și supra-complicarea.<br />
-Învățare prin practică – vei aplica tot ce înveți în proiecte reale.</p>
-
-
-<h2><strong>Cum te poți înscrie?</strong></h2>
-
-<p>Completează formularul de înscriere.
-Vei fi contactat pentru detalii suplimentare.
-Primește un ghid complet pentru începutul cursului.</p>
-
-<p>Dacă ai întrebări, consultă secțiunea de Întrebări Frecvente sau contactează-ne prin e-mail.</p>
-
-
-<p>Învață, experimentează și evoluează alături de noi. Transformă-ți ideile în realitate și cariera ta va lua avânt!</p>
-
-<p>Hai să începem împreună!</p>
-
-</div>
-<div class="span-7 append-1 last">
-	<div class="box sidebar">
-		<h2>Cursuri:</h2>
-<p>Tu alegi ce dorești să înveți!</p>
-<p>-<strong>Introducere în programare cu Java</strong>, 120 de ore, 6 luni, de la € 60 / lună<br />
--<strong>Introducere în programare cu Python</strong>, 120 de ore, 6 luni, de la € 60 / lună<br />
--<strong>Programarea jocurilor video în Java</strong>, 60 de ore, 3̶6̶0̶0̶, 3000 RON.<br />
--<strong>Programarea jocurilor video în Python</strong>, 60 de ore, 3̶6̶0̶0̶, 3000 RON.<br />
--<strong>Introducere in electronică</strong>,48 de ore, 2̶8̶8̶0, 2400 RON.<br />
--<strong>Excel pentru începători</strong>,24 de ore, 1̶5̶0̶0, 1200 RON.<br />
--<strong>Excel pentru avansați</strong>,48 de ore, 4̶3̶2̶0, 2400 RON.<br />
--<strong>Proiectarea jocurilor video</strong>,48 de ore, 4̶3̶2̶0, 2400 RON.</p>
-<hr />
-<p><strong>Program:</strong></p>
-<p>Cursurile se desfășoară în sala de clasă sau online interactiv în mod semi-intensiv (2 sesiuni pe saptămână cu durata de 2 ore fiecare) sau intensiv, în weekend (2 sesiuni pe săptămână cu durata de 6 ore fiecare)</p>
-<p>After-Work: <strong>18.30-20.30</strong><br />
-Weekend: <strong>09.00-15.00</strong></p>
-<hr />
-<p><strong>Organizarea grupelor:</strong></p>
-<p>-Grupele de instruire nu depășesc 10-12 cursanți.<br />
-Important! Dacă în grupă se înscriu mai puțin de 10 cursanți cursul se amână până la completarea grupei cu numărul minim de participanți.</p>
-<hr />
-<p><strong>De ce ai nevoie?</strong></p>
-<p>-un laptop personal</p>
-
-	</div>
-	
-</div>
-		  <hr class="space" />
-
-		 <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8V-5Qiog3BOriPpcRPlU3XGzGzEKZXxHycMCzzQzYjRRx9g/viewform" style="margin:auto; text-align:center; display: block;font-size: 14px; text-decoration: none;
-  background-color: #ffcccc color: #333333; padding: 2px 6px 2px 6px; border-top: 1px solid #CCCCCC; border-right: 1px solid #333333; border-bottom: 1px solid #333333; border-left: 1px solid #CCCCCC;">Înscrie-te aici!</a>
-
-
-
-      </div>
-      <div class="footer">
-        <hr class="space" />
-	    <div class="span-6 colborder prepend-1 append-1">
-	      	<h3>Contact</h3>
-	      	<p><b>E-mail: </b><u>mail.games.academy@gmail.com</u></p>
-			<p><b>Mobile: </b><u>0746 099 661</u></p>
-	    </div>
-	    <div class="span-8 prepend-1 append-1 colborder">
-	      	<h3>Contact details</h3>
-	      	<p>
-	      		Facebook: <a href="https://www.facebook.com/Games-Academy-103603121264837/?modal=admin_todo_tour">Logitica</a><br/>
-	      		</p>
-	    </div>
-        <div class="span-5 prepend-1 last">
-        	<h3>Lost?</h3>
-			<p><a href="/Sitemap">Try the sitemap</a>.</p>
-	  	</div>
-   	    <hr class="space" />
-      </div>
-   	  <hr class="space" />
-      <div class="tail">
-      	
-      </div>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#acasa" aria-label="iTAcodemy – Acasă">
+        <span class="brand-mark">&lt;/&gt;</span>
+        <span>iTAcodemy<small>TEHNOLOGIE PENTRU ORICINE</small></span>
+      </a>
+      <nav class="navlinks" aria-label="Navigare principală">
+        <a href="#cursuri">Cursuri</a><a href="#pentru-cine">Pentru cine</a><a href="#metoda">Metoda noastră</a><a href="#despre">Despre</a>
+      </nav>
+      <a class="btn btn-primary" href="#contact">Înscrie-te <span aria-hidden="true">↗</span></a>
     </div>
-  </body>
+  </header>
+
+  <main>
+    <section class="hero" id="acasa">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">TEHNOLOGIE PENTRU ORICINE</div>
+          <h1>Învață să gândești.<br>Învață să <em>programezi.</em></h1>
+          <p class="hero-copy">Transformă curiozitatea în competențe. Descoperă programarea, algoritmii și lumea digitală prin cursuri practice, construite în jurul ideilor și proiectelor reale.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#cursuri">Descoperă cursurile <span aria-hidden="true">→</span></a>
+            <a class="btn btn-outline" href="#contact">Hai să discutăm</a>
+          </div>
+          <div class="hero-note">Pentru copii, adolescenți și adulți · Online și individual</div>
+        </div>
+        <div class="code-window" aria-label="Exemplu de cod">
+          <div class="window-head"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span style="margin-left:8px">primul_meu_program.py</span></div>
+          <pre><span class="code-comment"># Orice program începe cu o idee.</span>
+<span class="code-key">def</span> <span class="code-fn">invata</span>(curiozitate):
+    <span class="code-key">if</span> curiozitate:
+        <span class="code-key">return</span> <span class="code-str">"Hai să construim!"</span>
+
+<span class="code-fn">print</span>(invata(<span class="code-key">True</span>))</pre>
+          <div class="code-foot"><span>PYTHON · ÎNCEPĂTOR</span><span>● gata de rulat</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cursuri">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">CE POȚI ÎNVĂȚA</div>
+          <h2>De la primele linii de cod la proiecte reale.</h2>
+          <p>Cursuri care dezvoltă gândirea logică, creativitatea și încrederea de a rezolva probleme.</p>
+        </div>
+        <div class="courses">
+          <article class="course"><div class="course-icon">Py</div><h3>Python</h3><p>Învață fundamentele programării și creează aplicații, jocuri și mici simulări.</p></article>
+          <article class="course"><div class="course-icon">J</div><h3>Java</h3><p>Descoperă programarea orientată pe obiecte și construiește aplicații solide.</p></article>
+          <article class="course"><div class="course-icon">⌘</div><h3>Algoritmi și logică</h3><p>Exersează gândirea algoritmică, strategiile de rezolvare și bazele informaticii.</p></article>
+          <article class="course"><div class="course-icon">▣</div><h3>Dezvoltare de jocuri</h3><p>Învață programând jocuri: reguli, mișcare, interacțiune și mecanici.</p></article>
+          <article class="course"><div class="course-icon">{ }</div><h3>Fundamente IT</h3><p>Înțelege cum funcționează calculatoarele, aplicațiile, internetul și web-ul.</p></article>
+          <article class="course"><div class="course-icon">↗</div><h3>Pregătire individuală</h3><p>Conținut adaptat nivelului și obiectivelor tale, cu explicații și exerciții practice.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="audience" id="pentru-cine">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">ÎNVĂȚARE LA ORICE VÂRSTĂ</div>
+          <h2>Un punct de plecare pentru fiecare.</h2>
+          <p>Nu ai nevoie de experiență anterioară. Pornim de la nivelul tău și construim pas cu pas.</p>
+        </div>
+        <div class="audience-grid">
+          <div class="audience-item"><h3>Copii</h3><p>Descoperă tehnologia prin exerciții creative, jocuri și proiecte potrivite vârstei.</p></div>
+          <div class="audience-item"><h3>Adolescenți</h3><p>Dezvoltă logica și bazele programării, inclusiv pentru școală și examene.</p></div>
+          <div class="audience-item"><h3>Adulți</h3><p>Începe de la zero, consolidează-ți cunoștințele sau explorează o nouă direcție profesională.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metoda">
+      <div class="wrap method-grid">
+        <div>
+          <div class="eyebrow">CUM ÎNVĂȚĂM</div>
+          <h2 style="font-size:clamp(2rem,4vw,3.1rem);line-height:1.1;letter-spacing:-1.5px;margin:12px 0 16px">Mai puțină memorare. Mai multă înțelegere.</h2>
+          <p style="color:var(--muted)">Programarea nu înseamnă doar să scrii cod. Înseamnă să pui întrebări, să descompui probleme și să găsești soluții.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div><h3>Înțelegem conceptele</h3><p>Explicații clare, exemple intuitive și legături cu situații reale.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div><h3>Exersăm împreună</h3><p>Probleme graduale, feedback și timp pentru întrebări.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div><h3>Construim proiecte</h3><p>Aplicăm ceea ce învățăm în programe și proiecte concrete.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="despre">
+      <div class="wrap">
+        <div class="about-card">
+          <div class="eyebrow">DESPRE iTACODEMY</div>
+          <h2 style="font-size:clamp(2rem,4vw,3rem);letter-spacing:-1.4px;line-height:1.1;margin:12px 0">Tehnologie pentru Oricine.</h2>
+          <p>Credem că programarea poate fi învățată de oricine, atunci când ideile sunt explicate clar, exercițiile sunt potrivite nivelului, iar practica are un scop. iTAcodemy este un spațiu pentru curiozitate, logică și învățare aplicată.</p>
+          <p>Fie că faci primii pași în programare sau vrei să aprofundezi un limbaj, obiectivul este același: să înțelegi, să exersezi și să poți construi singur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-box">
+        <div class="eyebrow">URMĂTORUL PAS ÎNCEPE AICI</div>
+        <h2>Ai o întrebare?<br><span style="color:var(--accent)">Hai să vorbim.</span></h2>
+        <p>Spune-ne ce vrei să înveți și pentru cine cauți un curs. Îți vom răspunde cu informații despre opțiunile potrivite.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" id="emailLink" href="mailto:contact@your-domain.ro">Trimite un e-mail ✉</a>
+          <a class="btn btn-outline" id="whatsappLink" href="https://wa.me/1234567890" target="_blank" rel="noopener">Scrie pe WhatsApp ↗</a>
+          <a class="btn btn-outline" id="facebookLink" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>© <span id="year"></span> iTAcodemy · Tehnologie pentru Oricine</div>
+      <div class="socials"><a href="#cursuri">Cursuri</a><a href="#despre">Despre</a><a href="#contact">Contact</a></div>
+    </div>
+  </footer>
+
+  <a class="wa-float" id="whatsappFloat" href="https://wa.me/1234567890" target="_blank" rel="noopener" aria-label="Contactează-ne pe WhatsApp">✆</a>
+  <script>
+    document.getElementById("emailLink").href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Informații despre cursurile iTAcodemy")}`;
+    document.getElementById("whatsappLink").href = whatsappUrl;
+    document.getElementById("whatsappFloat").href = whatsappUrl;
+    document.getElementById("facebookLink").href = FACEBOOK_URL;
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
